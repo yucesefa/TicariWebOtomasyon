@@ -1,0 +1,54 @@
+﻿@using Projee.Models
+@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@using(Html.BeginForm("Index","Urun",FormMethod.Get))
+            {
+                <p>
+                    ürün Adı: @Html.TextBox("p")
+                    <input type="submit" value="Ara" />
+                </p>
+            }
+<br />
+
+<table class="table table-hover">
+    <tr>
+        <th>Ürün</th>
+        <th>Marka</th>
+        <th>Stok</th>
+        <th>Alış Fiyat</th>
+        <th>Satış Fiyat</th>
+        <th>Kategori</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Satış Yap</th>
+
+    </tr>
+
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.UrunAd</td>
+            <td>@k.Marka</td>
+            <td>@k.Stok</td>
+            <td>@k.AlisFiyat ₺</td>
+            <td>@k.SatisFiyat ₺</td>
+            <td>@k.Kategori.KategoriAd</td>
+            <td><a href="/Urun/UrunSil/@k.UrunId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Urun/UrunGetir/@k.UrunId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Urun/UrunSatisYap/@k.UrunId" class="btn btn-default" style="background-color:aqua">Satış Yap</a></td>
+
+        </tr>
+    }
+
+
+
+</table>
+<a href="/Urun/UrunEkle" class="btn btn-primary">Ürün</a>
+
+
+
+

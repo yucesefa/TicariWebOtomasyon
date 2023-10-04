@@ -1,0 +1,42 @@
+﻿@using Projee.Models
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Personel Görsel</th>
+        <th>Departman</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+
+    @foreach (var k in Model)
+    {
+        <tr>
+
+            <td>@k.PersonelId</td>
+            <td>@k.PersonelAd</td>
+            <td>@k.PersonelSoyad</td>
+            <td>
+                <img src="@k.PersonelGorsel" style="width:50px;  height:50px;" />
+            </td>
+            <td>@k.DepartmanId</td>
+            <td><a href="/Personel/PersonelGetir/@k.PersonelId" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Departman/DepartmanPersonelSatis/@k.PersonelId" class="btn btn-outline-secondary">Detaylar</a></td>
+
+
+        </tr>
+    }
+
+
+
+</table>
+<a href="/Personel/PersonelEkle" class="btn btn-primary">Personel Ekle</a>
+
+

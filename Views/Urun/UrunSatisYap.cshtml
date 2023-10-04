@@ -1,0 +1,46 @@
+﻿@model Projee.Models.SatisHareket
+@{
+    ViewBag.Title = "UrunSatisYap";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.UrunId);
+    <input type="text" name="UrunId" value="@ViewBag.dgr2" class="form-control" readonly />
+    @*@Html.TextBoxFor(x=>x.UrunId, new  { @class = "form-control"} )*@
+    <br />
+    @Html.LabelFor(x => x.PersonelId);
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.CariId);
+    @Html.TextBoxFor(x => x.CariId, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Adet);
+    <input type="number" name="Adet" class="form-control" min="0" max="10" placeholder="Adet" id="txt1" onchange="sum();" />
+    <br />
+    @Html.LabelFor(x => x.Fiyat);
+    <input type="text" name="Fiyat" value="@ViewBag.dgr1" class="form-control" id="txt2" onkeyup="sum();" />
+    <br />
+    @Html.LabelFor(x => x.ToplamTutar);
+    <input type="text" name="ToplamTutar" value=0 class="form-control" id="txt3" readonly />
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+</form>
+
+
+<script>
+    function sum() {
+        var sayi1 = document.getElementById('txt1').value;
+        var sayi2 = document.getElementById('txt2').value;
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+        if (!isNaN(sonuc)) {
+            document.getElementById('txt3').value = sonuc + ",00";
+        }
+       
+    }
+</script>
+
+

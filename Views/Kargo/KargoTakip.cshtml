@@ -1,0 +1,33 @@
+﻿@using Projee.Models
+@model List<KargoTakip>
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+
+    </tr>
+    @{
+        int sayac = 0;
+    }
+
+
+    @foreach (var x in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@x.Aciklama</td>
+            <td>@x.Tarih</td>
+        </tr>
+    }
+
+</table>
+
