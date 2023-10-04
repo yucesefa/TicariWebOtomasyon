@@ -1,0 +1,2 @@
+# TicariWebOtomasyon
+TicariWebOtomasyon
